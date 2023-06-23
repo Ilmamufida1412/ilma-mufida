@@ -6,6 +6,7 @@ use App\Models\students;
 use App\Http\Requests\StorestudentsRequest;
 use App\Http\Requests\UpdatestudentsRequest;
 use Database\Seeders\Students as SeedersStudents;
+use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
@@ -14,11 +15,11 @@ class StudentsController extends Controller
      */
     public function index(Request $request)
     {
-        $serch = $request->query('serach');
+        $search = $request->query('search');
 
-        if(!empty($serch)){
-            $dataStudents = Students::where('students.idstudents','like','%'. $serch. '%')
-                ->orwhere('students.fullname','like','%'. $serch. '%')
+        if(!empty($search)){
+            $dataStudents = Students::where('students.idstudents','like','%'. $search. '%')
+                ->orwhere('students.fullname','like','%'. $search. '%')
                 ->paginate(10)->fragment('std');
             
         }else{
@@ -26,7 +27,8 @@ class StudentsController extends Controller
         }
 
         return view('students.data')->with([
-            'students' => $dataStudents
+            'students' => $dataStudents,
+            'search' => $search
         ]);
     }
 

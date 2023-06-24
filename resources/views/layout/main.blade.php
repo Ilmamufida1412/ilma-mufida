@@ -30,9 +30,14 @@
                 </a>
               </li>
             </ul>
+            <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
           </div>
         </div>
-      </nav>
+    </nav>
     {{-- end --}}
     {{-- content --}}
     <div class="mt-2 ps-5">

@@ -30,9 +30,10 @@
                 </a>
               </li>
             </ul>
+            <button class="btn btn-danger" type="submit">Logout</button>
           </div>
         </div>
-      </nav>
+    </nav>
     
     
     <div class="mt-2 ps-5">

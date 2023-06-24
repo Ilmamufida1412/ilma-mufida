@@ -17,7 +17,7 @@
             @endif
             <form method="GET" action="">
                 <div class="row mb-3">
-                    <label for="search" class="col-sm-2 col-form-label col-form-label-sm ">Email</label>
+                    <label for="search" class="col-sm-2 col-form-label col-form-label-sm ">Cari</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control form-control-sm" name="search" value="{{ $search }}" placeholder="please input key for serach data" autofocus>
                     </div>

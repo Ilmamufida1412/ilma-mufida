@@ -19,17 +19,24 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
-Route::get('/home', function () {
-    return view('layout.home');
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
-Route::get('/students/add', function () {
-    return view('students.formadd');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', function () {
+        return view('layout.home');
+    });
+    
+    Route::get('/students/add', function () {
+        return view('students.formadd');
+    });
+    
+    Route::resource('students',StudentsController::class);
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::resource('students',StudentsController::class);
 
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login');

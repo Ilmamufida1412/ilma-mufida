@@ -12,7 +12,7 @@
     
     <nav class="navbar navbar-expand-lg bg-success navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">Tabungan Sekolah</a>
+          <a class="navbar-brand">Tabungan Sekolah</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -30,7 +30,11 @@
                 </a>
               </li>
             </ul>
+            <form action="<?php echo e(route('logout')); ?>" method="POST" class="d-flex" role="search">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
             <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
           </div>
         </div>
     </nav>

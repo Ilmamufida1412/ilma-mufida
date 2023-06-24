@@ -17,13 +17,10 @@ class AuthController extends Controller
     public function registerPost(Request $request)
     {
         $user = new User();
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-
         $user->save();
-
         return back()->with('success', 'Register successfully');
     }
     public function login()
@@ -32,16 +29,17 @@ class AuthController extends Controller
     }
     public function loginPost(Request $request)
     {
-        $creditials = [
+        $credentials = [
             'email' => $request->email,
             'password' => $request->password,
         ];
-
-        if(Auth::attempt($creditials)){
-            return redirect('/layout.home')->with('success','Login Berhasil');
+        if(Auth::attempt($credentials)){
+            return Redirect('/layout.home')->with('success','Login Berhasil');
         }
-           
-        return back ()->with('error', 'Error email or password');
-        
+        return back()->with('error','Error email or Password');
+    }
+    public function logout(){
+        Auth::logout();
+        return Redirect()->route('login');
     }
 }

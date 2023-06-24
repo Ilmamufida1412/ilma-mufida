@@ -11,7 +11,7 @@
 {{-- navbar --}}
 <nav class="navbar navbar-expand-lg bg-success navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Tabungan Sekolah</a>
+      <a class="navbar-brand">Tabungan Sekolah</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">

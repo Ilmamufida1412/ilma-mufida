@@ -69,7 +69,8 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-            <?php echo e($students->links()); ?>
+            
+            <?php echo $students->appends(Request::except('page'))->render(); ?>
 
             </div>
         </div>
